@@ -1,49 +1,25 @@
-# AI Photo Enhancer & Thumbnail Generator
+AI photo Enhancer
 
-## Features
+Note - All the code for this small Fun project has been written and edited using AI. Almost 400 prompts given in total using english language.
+Database used in this project is MongoDB which is made and maintained by me (Akshat), for the image enhancement, API from replicate.com has been used.
+This project took 3 days with 3-4 hours given per day, in total it took 12 hours for this project to complete. Cursor was used as the software for the development.
+If you open any code file, it is fairly clear that no code has been written by me, i only checked for the errors and missteps but I hardly found any.
 
-- **Photo Enhancer:**
-  - Upload a photo to enhance its visual quality using AI (color, sharpness, etc.).
-  - Supports multiple image formats (JPG, PNG, etc.).
-  - User can view and delete their enhanced photos (deletion is soft, admin keeps record).
+---
 
-- **Thumbnail Generator:**
-  - Upload a rough sketch (photo/scan of a drawing).
-  - Provide a context/description for the thumbnail.
-  - AI generates a thumbnail based on the sketch and context.
+Making it better - If you are interested you can make this better by writing code yourself, not using AI. More updates will be provided very soon for the contirbutions. 
 
-- **User Authentication:**
-  - Email/password registration and login.
-  - Username auto-generated from email.
-  - No email verification for MVP.
-
-- **User Dashboard:**
-  - View history of enhanced photos and generated thumbnails.
-  - Delete images from user view (admin keeps record).
-
-- **Admin Panel:**
-  - View all users and all images (including deleted by users).
+---
 
 ## Tech Stack
 - Node.js + Express (backend)
 - HTML/CSS/JavaScript (frontend)
-- PostgreSQL (database)
-- Local storage for images (MVP), can switch to cloud later
-- AI API integration (to be added)
+- MongoDb (database)
+- AI API integration 
 
 ---
 
 ## Setup
 1. Install dependencies
-2. Configure Postgres
+2. Configure MongoDB
 3. Run backend and frontend
-
----
-
-## To Do
-- [ ] Scaffold backend (Express, routes, models)
-- [ ] Scaffold frontend (HTML/CSS/JS)
-- [ ] User authentication
-- [ ] Photo enhancer UI & API
-- [ ] Thumbnail generator UI & API
-- [ ] Admin panel 
