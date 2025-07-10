@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Enhancement</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="animated-bg"></div>
+  <div id="app">
+    <header>
+      <h1>Photo Enhancement</h1>
+      <nav>
+        <button id="nav-enhancer">Photo Enhancer</button>
+        <button id="nav-support">Support Us</button>
+      </nav>
+    </header>
+    <main>
+      <section id="photo-enhancer-section" style="display:block;">
+        <h2>Photo Enhancer</h2>
+        <form id="enhancer-form">
+          <input type="file" id="enhancer-photo" accept="image/*" required />
+          <button type="submit">Enhance Photo</button>
+        </form>
+        <div id="enhancer-result"></div>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html> 

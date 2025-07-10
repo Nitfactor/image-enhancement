@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Backend Connection Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .success { color: green; }
+        .error { color: red; }
+        .info { color: blue; }
+        button { padding: 10px; margin: 5px; }
+        #results { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>🔧 Backend Connection Test</h1>
+    
+    <button onclick="testBackend()">Test Backend Connection</button>
+    <button onclick="testAuth()">Test Authentication</button>
+    <button onclick="clearResults()">Clear Results</button>
+    
+    <div id="results"></div>
+
+    <script>
+        const API_BASE = 'http://localhost:5001/api';
+        
+        function addResult(message, type = 'info') {
+            const results = document.getElementById('results');
+            const div = document.createElement('div');
+            div.className = type;
+            div.innerHTML = `[${new Date().toLocaleTimeString()}] ${message}`;
+            results.appendChild(div);
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        async function testBackend() {
+            addResult('🔄 Testing backend connection...', 'info');
+            
+            try {
+                const res = await fetch(`${API_BASE}/test`);
+                const data = await res.json();
+                
+                if (res.ok) {
+                    addResult(`✅ Backend is working! Database: ${data.database}`, 'success');
+                    addResult(`📊 Response: ${JSON.stringify(data)}`, 'info');
+                } else {
+                    addResult(`❌ Backend error: ${data.error}`, 'error');
+                }
+            } catch (err) {
+                addResult(`❌ Network error: ${err.message}`, 'error');
+                addResult('💡 Make sure the backend server is running with: npm run dev', 'info');
+            }
+        }
+        
+        async function testAuth() {
+            addResult('🔄 Testing authentication...', 'info');
+            
+            try {
+                // Test registration
+                const registerRes = await fetch(`${API_BASE}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        email: 'test@example.com', 
+                        password: 'testpassword123' 
+                    })
+                });
+                
+                const registerData = await registerRes.json();
+                
+                if (registerRes.ok) {
+                    addResult('✅ Registration successful!', 'success');
+                    
+                    // Test login
+                    const loginRes = await fetch(`${API_BASE}/auth/login`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ 
+                            email: 'test@example.com', 
+                            password: 'testpassword123' 
+                        })
+                    });
+                    
+                    const loginData = await loginRes.json();
+                    
+                    if (loginRes.ok) {
+                        addResult('✅ Login successful!', 'success');
+                        addResult('🎉 Authentication is working perfectly!', 'success');
+                    } else {
+                        addResult(`❌ Login failed: ${loginData.error}`, 'error');
+                    }
+                } else {
+                    addResult(`❌ Registration failed: ${registerData.error}`, 'error');
+                }
+            } catch (err) {
+                addResult(`❌ Authentication test error: ${err.message}`, 'error');
+            }
+        }
+        
+        // Auto-test on page load
+        window.onload = function() {
+            addResult('🚀 Page loaded. Click buttons to test functionality.', 'info');
+        };
+    </script>
+</body>
+</html> 

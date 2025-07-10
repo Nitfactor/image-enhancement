@@ -1,0 +1,33 @@
+# === ENVIRONMENT VARIABLES ===
+.env
+
+# === NODE MODULES (Don't Upload Dependencies) ===
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+
+# === UPLOADED FILES (User Content like Images) ===
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# === BUILD FOLDERS (If added later) ===
+frontend/build/
+frontend/dist/
+backend/build/
+backend/dist/
+
+# === LOG FILES ===
+*.log
+npm-debug.log*
+
+# === SYSTEM / OS FILES ===
+.DS_Store
+Thumbs.db
+
+# === IDE / EDITOR CONFIG ===
+.vscode/
+.idea/
+
+# === TEMP / MISC ===
+*.bak
+*.tmp
